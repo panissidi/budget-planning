@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card" id="app">
+
+    <!-- Step 2: Pay frequency -->
+    <div id="step-frequency" class="hidden">
+      <button class="btn-back" id="btn-back-frequency">&#8592; Back</button>
+      <h2>Pay frequency</h2>
+      <p class="subtitle">How often do you get paid?</p>
+      <div class="frequency-grid">
+        <button class="freq-btn" data-freq="daily">Daily</button>
+        <button class="freq-btn" data-freq="weekly">Weekly</button>
+        <button class="freq-btn active" data-freq="twice-monthly">Twice monthly</button>
+        <button class="freq-btn" data-freq="other">Other</button>
+      </div>
+      <div id="coming-soon" class="coming-soon hidden">
+        This pay frequency is coming soon. Please select <strong>Twice monthly</strong> to continue.
+      </div>
+      <button class="btn-primary" id="btn-next-frequency">Continue</button>
+    </div>
+
+    <!-- Step 1: Expenses -->
+    <div id="step-expenses">
+      <h1>Budget calculator</h1>
+      <p class="subtitle">Track your expenses so that you know exactly how much to save for each expense from every paycheck.</p>
+      <h3 class="table-title">Expenses</h3>
+      <p class="subtitle">Add your expenses, how much they cost, how frequently you pay them, and, if applicable, when you last paid them.</p>
+      <div class="expense-table">
+        <div class="expense-header">
+          <span class="sortable" data-sort="name">Expense <span class="sort-icon"></span></span>
+          <span class="sortable" data-sort="amount">Amount <span class="sort-icon"></span></span>
+          <span class="sortable" data-sort="frequency">Frequency <span class="sort-icon"></span></span>
+          <span class="sortable" data-sort="lastpaid">Last paid <span class="sort-icon"></span></span>
+          <span></span>
+        </div>
+        <div id="expense-rows"></div>
+      </div>
+      <button class="btn-add-row" id="btn-add-expense">+ Add expense</button>
+      <button class="btn-primary" id="btn-next-expenses">Continue</button>
+    </div>
+
+    <!-- Step 3: Paycheck details -->
+    <div id="step-details" class="hidden">
+      <button class="btn-back" id="btn-back">&#8592; Back</button>
+      <h2>Paycheck details</h2>
+      <p class="subtitle">Tell us about this paycheck.</p>
+
+      <div class="form-group">
+        <label for="paycheck-amount">Paycheck amount</label>
+        <div class="amount-input-group">
+          <span>$</span>
+          <input type="number" id="paycheck-amount" placeholder="0.00" min="0" step="0.01" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="paycheck-date">Date of paycheck</label>
+        <input type="date" id="paycheck-date" />
+      </div>
+
+      <div class="form-group" id="paycheck-number-group">
+        <label>Which paycheck is this?</label>
+        <div class="toggle-group">
+          <button class="toggle-btn active" data-check="first">1st paycheck</button>
+          <button class="toggle-btn" data-check="second">2nd paycheck</button>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="btn-next-details">Continue</button>
+    </div>
+
+    <!-- Step 4: Results -->
+    <div id="step-results" class="hidden">
+      <button class="btn-back" id="btn-back-results">&#8592; Back</button>
+      <h2>Your savings</h2>
+      <p class="subtitle">Here's what you have left after all deductions.</p>
+      <div id="results-content"></div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
